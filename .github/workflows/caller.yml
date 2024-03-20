@@ -23,11 +23,20 @@ jobs:
           release_name: $GITHUB_REF_NAME
           suppress_errors: true
 
-  some-job:
-    name: Some job
+  some-job-stage:
+    name: Some job Stage
     needs: [git]
     if: success()
     uses: ./.github/workflows/callable_workflow.yml
     with:
       SOME_INPUT: test input
       ENV: Stage
+
+  some-job-prod:
+    name: Some job Prod
+    needs: [git]
+    if: success()
+    uses: ./.github/workflows/callable_workflow.yml
+    with:
+      SOME_INPUT: test input
+      ENV: Prod
