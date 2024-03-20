@@ -5,8 +5,8 @@ on:
       - reusable_workflow
 
 jobs:
-  some-job:
-    name: Some job
+  git:
+    name: Git
     runs-on: ubuntu-latest
     environment: Stage
     steps:
@@ -19,8 +19,9 @@ jobs:
           git push --delete origin $GITHUB_REF_NAME
           git tag -d $GITHUB_REF_NAME
 
-      - name: Run reusable workflow
-        uses: ./callable_workflow.yml
-        with:
-          SOME_INPUT: test input
-        secrets: inherit
+  some-job:
+    name: Some job
+    uses: ./.github/workflows/callable_workflow.yml
+    with:
+      SOME_INPUT: test input
+    secrets: inherit
