@@ -1,0 +1,17 @@
+name: Caller workflow
+on:
+  push:
+    tags:
+      - reusable_workflow
+
+jobs:
+  some-job:
+    name: Some job
+    runs-on: ubuntu-latest
+    environment: Stage
+    steps:
+      - name: Run reusable workflow
+        uses: ./callable_workflow.yml
+        with:
+          SOME_INPUT: test input
+        secrets: inherit
