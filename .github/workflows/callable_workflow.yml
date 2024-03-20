@@ -18,5 +18,6 @@ jobs:
       - name: Run reusable workflow
         run: |
           echo "SOME_INPUT=${{ inputs.SOME_INPUT }}"
-          echo "SECRET_INHERIT=${{ secrets.SECRET }}"
+          echo "SECRET=${{ secrets.SECRET }}"
+          echo "VARIABLE=${{ vars.VARIABLE }}"
 
