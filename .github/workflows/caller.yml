@@ -8,7 +8,6 @@ jobs:
   git:
     name: Git
     runs-on: ubuntu-latest
-    environment: Stage
     steps:
       - name: Prepare git
         run: |
