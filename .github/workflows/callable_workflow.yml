@@ -21,3 +21,15 @@ jobs:
           echo "SECRET=${{ secrets.SECRET }}"
           echo "VARIABLE=${{ vars.VARIABLE }}"
 
+          if [ "${{ secrets.SECRET }}" == "123" ]; then
+            echo "Stage secret"
+          else
+            echo "Not matched stage"
+          fi
+
+          if [ "${{ secrets.SECRET }}" == "321" ]; then
+            echo "Prod secret"
+          else
+            echo "Not matched prod"
+          fi
+
