@@ -30,4 +30,5 @@ jobs:
     uses: ./.github/workflows/callable_workflow.yml
     with:
       SOME_INPUT: test input
+      ENV: Stage
     secrets: inherit
