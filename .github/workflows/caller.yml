@@ -31,4 +31,3 @@ jobs:
     with:
       SOME_INPUT: test input
       ENV: Stage
-    secrets: inherit
