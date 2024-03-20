@@ -11,7 +11,6 @@ jobs:
   git:
     name: Git
     runs-on: ubuntu-latest
-    environment: Stage
     steps:
       - uses: actions/checkout@v3
         with:
@@ -23,20 +22,15 @@ jobs:
           release_name: $GITHUB_REF_NAME
           suppress_errors: true
 
-  some-job-stage:
-    name: Some job Stage
+  some-job:
+    name: Some job
     needs: [git]
     if: success()
+    strategy:
+      matrix:
+        target: [Stage, Prod]
     uses: ./.github/workflows/callable_workflow.yml
     with:
       SOME_INPUT: test input
-      ENV: Stage
-
-  some-job-prod:
-    name: Some job Prod
-    needs: [git]
-    if: success()
-    uses: ./.github/workflows/callable_workflow.yml
-    with:
-      SOME_INPUT: test input
-      ENV: Prod
+      ENV: ${{ matrix.target }}
+    secrets: inherit
