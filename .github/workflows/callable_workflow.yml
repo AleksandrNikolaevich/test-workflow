@@ -33,3 +33,9 @@ jobs:
             echo "Not matched prod"
           fi
 
+          if [ "${{ secrets.COMMON_SECRET }}" == "test" ]; then
+            echo "COMMON_SECRET secret"
+          else
+            echo "Not matched COMMON_SECRET"
+          fi
+
